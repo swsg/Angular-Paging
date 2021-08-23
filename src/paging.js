@@ -43,6 +43,8 @@ angular.module('bw.paging', []).directive('paging', function () {
             disabled: '@',
             dots: '@',
             ulClass: '@',
+            liClass: '@',
+            aTagClass: '@',
             activeClass: '@',
             disabledClass: '@',
             adjacent: '@',
@@ -93,11 +95,11 @@ angular.module('bw.paging', []).directive('paging', function () {
             return '<ul data-ng-hide="Hide" data-ng-class="ulClass"> ' +
                 '<li ' +
                     'title="{{Item.title}}" ' +
-                    'data-ng-class="Item.liClass" ' +
+                    'data-ng-class="liClass" ' +
                     'data-ng-repeat="Item in List"> ' +
                         '<a ' + 
                             (attrs.pgHref ? 'data-ng-href="{{Item.pgHref}}" ' : 'href ') +
-                            'data-ng-class="Item.aClass" ' +
+                            'data-ng-class="Item.aClass" ' + 'class="{{aTagClass}}"' + 
                             'data-ng-click="Item.action()" ' +
                             'data-ng-bind="Item.value">'+ 
                         '</a> ' +
@@ -126,6 +128,8 @@ angular.module('bw.paging', []).directive('paging', function () {
         scope.dots = scope.dots || '...';
         
         scope.ulClass = scope.ulClass || 'pagination';
+        scope.liClass = scope.liClass || 'page-item';
+        scope.aTagClass = scope.aTagClass || 'page-link';
         scope.activeClass = scope.activeClass || 'active';
         scope.disabledClass = scope.disabledClass || 'disabled';
 
